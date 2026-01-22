@@ -24,14 +24,16 @@ const corsOptions = {
   credentials: true
 };
 
-app.use(cors(corsOptions)); // Enables use of CORS - * means every domain is now allowed acces to this server to send and receive data - not secure - * is for development only
-
+// app.use(cors(corsOptions)); // Enables use of CORS - * means every domain is now allowed acces to this server to send and receive data - not secure - * is for development only
+app.use(cors("*"));
 
 // ---------------------------------------- ROUTES ----------------------------------------
 
 const taskRoutes = require("./routes/taskRoutes");
+const mailRoutes = require("./routes/mailRoutes");
 
 app.use("/api/tasks", taskRoutes);
+app.use("/api/mail", mailRoutes);
 
 
 // ---------------------- ↓ DATABASE CONNECTION + APP STARTUP ↓ ---------------------------
